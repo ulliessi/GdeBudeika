@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Кофейня GdeBydeika</title>
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <section class="slideshow">
+        <img src="Banner.png" alt="Background Image" class="background-image">
+    </section>
+
+    <!-- 2. Навигационное меню (header) -->
+    <header>
+        <div class="top-bar">
+            <!-- Логотип -->
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="log.png" alt="Whimsy Logo">
+                </a>
+            </div>
+
+            <!-- Основное меню -->
+            <nav class="menu">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="katalog.html">Каталог</a></li>
+                    <li><a href="about-us.html">О нас</a></li>
+                </ul>
+            </nav>
+
+            <!-- Кнопка + корзина -->
+            <div class="right-container">
+                <button class="order-button" onclick="location.href='individual-order.html'">Онлайн заказ</button>
+            </div>
+        </div>
+
+        </div>
+    </header>
+
+    <div class="popular-section-h2">
+        <h2>Сезонные напитки</h2>
+    </div>
+    <div class="popular-section">
+        <div class="card">
+            <a href="ссылка-на-страницу-товара1" class="card-link">
+                <img src="3.png" alt="Товар 1">
+                <div class="container">
+                    <h4><b>Раф на кокосовом молоке </b></h4>
+                    <p>Состав: эспрессо, молоко, лёд</p>
+                </div>
+                <div class="cart-controls">
+                    <!-- Кнопка "В корзину" -->
+                    <button class="add-to-cart">🛒 В корзину</button>
+                </div>
+            </a>
+        </div>
+        <!-- Карточка 2 -->
+        <div class="card">
+            <a href="ссылка-на-страницу-товара2" class="card-link">
+                <img src="4.png" alt="Товар 2">
+                <div class="container">
+                    <h4><b>Клубничный раф</b></h4>
+                    <p>Состав: эспрессо, сливки, молоко, ванильный сахар, клубничное пюре</p>
+                </div>
+                <div class="cart-controls">
+                    <!-- Кнопка "В корзину" -->
+                    <button class="add-to-cart">🛒 В корзину</button>
+                </div>
+            </a>
+        </div>
+        <!-- Карточка 3 -->
+        <div class="card">
+            <a href="ссылка-на-страницу-товара3" class="card-link">
+                <img src="5.png" alt="Товар 3">
+                <div class="container">
+                    <h4><b>Миндальный латте</b></h4>
+                    <p>Состав: эспрессо, миндальное молоко, миндальный сироп</p>
+                </div>
+                <div class="cart-controls">
+                    <!-- Кнопка "В корзину" -->
+                    <button class="add-to-cart">🛒 В корзину</button>
+                </div>
+            </a>
+        </div>
+        <!-- Карточка 4 -->
+        <div class="card">
+            <a href="ссылка-на-страницу-товара4" class="card-link">
+                <img src="6.png" alt="Товар 4">
+                <div class="container">
+                    <h4><b>Матча Бамбл</b></h4>
+                    <p>Состав: матча, апельсиновый сок, тростниковый сироп, лёд</p>
+                </div>
+                <div class="cart-controls">
+                    <!-- Кнопка "В корзину" -->
+                    <button class="add-to-cart">🛒 В корзину</button>
+                </div>
+            </a>
+        </div>
+        <!-- Карточка 5 -->
+        <div class="card">
+            <a href="ссылка-на-страницу-товара5" class="card-link">
+                <img src="7.png" alt="Товар 5">
+                <div class="container">
+                    <h4><b>Халвичный раф</b></h4>
+                    <p>Состав: эспрессо, сливки, молоко, халва, ванильный сахар</p>
+                </div>
+                <div class="cart-controls">
+                    <!-- Кнопка "В корзину" -->
+                    <button class="add-to-cart">🛒 В корзину</button>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+    <div class="loyalty-program">
+        <h2>Программа Лояльности</h2>
+        <p>Присоединяйтесь и получайте эксклюзивные бонусы!</p>
+        <ul>
+            <li>Скидки на кофе</li>
+            <li>Бонусные баллы</li>
+            <li>Секретные предложения</li>
+        </ul>
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+        <div class="circle circle-4"></div>
+        <div class="circle circle-5"></div>
+        <div class="circle circle-6"></div>
+    </div>
+
+
+
+    <div class="back">
+        <section class="contact-form">
+            <h2>Заполните форму и мы свяжемся с вами</h2>
+            <form action="submit_form.php" method="post">
+                <div class="form-group">
+                    <label for="name">Ваше имя:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Ваш номер телефона:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Ваша электронная почта:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <button type="submit">Заказать звонок</button>
+            </form>
+        </section>
+    </div>
+    <footer>
+        <div class="footer-column contact-info">
+            <h3>Контакты</h3>
+            <p>Телефон: <a href="tel:+375331234567">+375 33 123-45-67</a></p>
+            <p>Email: <a href="mailto:GdeBydeika@gmail.com">GdeBydeika@gmail.com</a></p>
+            <div class="social-icons">
+                <img src="inst.png" onclick="location.href='https://instagram.com';">
+                <img src="tg.png" onclick="location.href='https://telegram.com';">
+                <img src="whatsapp.png" onclick="location.href='https://whatsapp.com';">
+            </div>
+        </div>
+        <div class="footer-column customer-info">
+            <h3>Покупателям</h3>
+            <ul>
+                <li><a href="#">Доставка</a></li>
+                <li><a href="#">Оплата</a></li>
+                <li><a href="#">Возврат и обмен</a></li>
+                <li><a href="#">Техническая поддержка</a></li>
+            </ul>
+        </div>
+        <div class="footer-column about-us">
+            <h3>О нас</h3>
+            <ul>
+                <li><a href="#">Почему мы</a></li>
+                <li><a href="#">Вопросы и ответы</a></li>
+                <li><a href="#">Адреса магазинов</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+
+

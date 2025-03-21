@@ -1,0 +1,971 @@
+﻿html, body {
+    width: 100vw; /* Ширина равна 100% ширины окна браузера */
+    min-height: 100vh; /* Минимальная высота равна 100% высоты окна браузера */
+    margin: 0; /* Убираем стандартные внешние отступы */
+    padding: 0; /* Убираем стандартные внутренние отступы */
+    overflow-x: hidden; /* Запрещаем горизонтальную прокрутку */
+    overflow-y: auto; /* Оставляем вертикальную прокрутку */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4edfa;
+}
+
+
+
+/* Общее оформление хедера */
+/* Общие стили шапки */
+header {
+    background: linear-gradient(90deg, #f9f3fc, #e8d9f1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background 0.3s ease;
+}
+
+/* Контейнер верхнего меню */
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+/* Логотип */
+.logo-container img {
+    width: 145px;
+    height: auto;
+    transition: transform 0.3s ease;
+    margin-bottom: 5px;
+}
+
+    .logo-container img:hover {
+        transform: scale(1.03);
+    }
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 4rem; 
+}
+
+    .menu ul li a {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #2b0e2f;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+        .menu ul li a:hover {
+            color: #fff;
+            background-color: #c3a2ce;
+            box-shadow: 0px 3px 10px rgba(195, 162, 206, 0.5);
+        }
+
+/* Кнопка "Заказать" */
+.order-button {
+    background: #8f6da8; /* Лавандовый цвет */
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 27px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(157, 123, 189, 0.5);
+    margin-right: 70px;
+}
+
+
+    .order-button:hover {
+        background: #8765a6;
+        box-shadow: 0px 6px 15px rgba(135, 101, 166, 0.7);
+        transform: scale(1.05);
+    }
+
+
+/* Контейнер кнопки и корзины */
+.right-container {
+    display: flex;
+    align-items: center;
+    margin-right: 70px;
+}
+
+/* Адаптация под мобильные устройства */
+@media (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .order-button {
+        margin-left: 0;
+    }
+
+}
+
+
+.slideshow {
+    position: relative;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+}
+
+.background-image {
+    padding-top: 70px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.popular-section-h2 {
+    font-size: 1.7em; /* Размер шрифта */
+    padding-left: 30px;
+    text-align: center;
+    width: 100%;
+    color: #2b0e2f; /* Темно-фиолетовый цвет */
+    position: relative;
+    background-color: #f4edfa; /* Легкий фиолетовый фон, похожий на фон карточек */
+    z-index: 1; /* Чтобы псевдоэлементы не перекрывали текст */
+}
+
+    .popular-section-h2::before,
+    .popular-section-h2::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 40%; /* Ширина линий */
+        height: 1px; /* Тонкая линия */
+        background-color: #7e5d96; /* Цвет линии */
+        transform: translateY(-50%); /* Центрируем линии по вертикали */
+    }
+
+    .popular-section-h2::before {
+        left: 0;
+        background: linear-gradient(to right, #7e5d96, rgba(126, 93, 150, 0)); /* Левый градиент */
+    }
+
+    .popular-section-h2::after {
+        right: 0;
+        background: linear-gradient(to left, #7e5d96, rgba(126, 93, 150, 0)); /* Правый градиент */
+    }
+
+
+/* Основной блок "Популярное" */
+.popular-section {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Центрируем карточки */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 10px auto;
+    padding: 30px 5px;
+    background: white; /* Белый фон для чистоты */
+    border-radius: 15px;
+    overflow: hidden; /* Скрываем выступающие части псевдоэлементов */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+    /* Мягкий радиальный ореол — убирает резкость и создает слоистый фон */
+    .popular-section::before {
+        content: "";
+        position: absolute;
+        top: -20%;
+        left: -20%;
+        width: 140%;
+        height: 140%;
+        background: radial-gradient( circle at center, rgba(225, 212, 247, 0.25) 0%, transparent 80% );
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    /* Заголовок секции */
+    .popular-section h2 {
+        text-align: center;
+        color: #6e4a87;
+        font-family: 'Roboto', sans-serif;
+        font-size: 2.3rem;
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+/* Карточки товара */
+.card {
+    max-width: 90%;
+    flex: 0 1 calc(16% - 20px); /* Размер карточек с учетом gap */
+    margin-bottom: 30px;
+    border-radius: 15px;
+    overflow: hidden;
+    text-decoration: none;
+    background-color: #f9f3fc;
+    padding: 20px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
+        background-color: #e1d4f7;
+    }
+
+    /* Изображения карточек */
+    .card img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 12px;
+        transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .card:hover img {
+        transform: scale(1.40);
+        filter: brightness(95%);
+    }
+
+.cart-controls {
+    text-align: center;
+    margin-top: auto;
+    padding-top: 50px; /* Увеличиваем отступ сверху, чтобы кнопка опустилась */
+    width: 80%;
+    position: absolute;
+    bottom: 15px; /* Оставляем прежний отступ от края карточки */
+}
+
+
+/* Кнопка "В корзину" */
+.add-to-cart {
+    background: linear-gradient(135deg, #6e4a87, #51406a);
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    width: 100%;
+}
+
+    .add-to-cart:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .add-to-cart:active {
+        transform: translateY(0);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    }
+
+/* Заголовок секции */
+.popular-section h2 {
+    color: #6e4a87;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+}
+
+/* Стили для заголовков h4 */
+.container h4 {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #3f2a44;
+    text-align: left;
+    margin-bottom: 1rem; /* Увеличиваем расстояние для улучшения визуального восприятия */
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e8e0f0;
+    text-decoration: none;
+}
+
+/* Стили для абзацев p */
+.container p {
+    font-size: 0.9em;
+    color: #5e4560;
+    text-align: left;
+    margin-top: 0.5rem;
+    margin-bottom: 3rem; /* Немного увеличиваем отступ снизу для лучшего разделения */
+    line-height: 1.6; /* Улучшает читаемость текста */
+    text-decoration: none;
+}
+
+
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+    .container h4:hover, .container p:hover, .card-link:hover {
+        color: #c3a2ce;
+    }
+
+.contact-form {
+    max-width: 85%;
+    margin: 4rem auto;
+    padding: 2.5rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid #e6e1f0;
+}
+
+    .contact-form::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        width: 100px;
+        height: 100px;
+        background: rgba(136, 80, 181, 0.1);
+        border-radius: 50%;
+        transition: transform 0.4s ease;
+    }
+
+    .contact-form:hover::before {
+        transform: scale(1.15);
+    }
+
+    .contact-form h2 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #2b0e2f;
+        text-align: center;
+        margin-bottom: 18px;
+        letter-spacing: 0.5px;
+    }
+
+    .contact-form .form-group {
+        margin-bottom: 1.25rem;
+        position: relative;
+    }
+
+        .contact-form .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #5e4560;
+            margin-bottom: 0.5rem;
+            text-transform: none;
+        }
+
+        .contact-form .form-group input,
+        .contact-form .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e6e1f0;
+            background: #f9f8fc;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #2d2d2d;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+            .contact-form .form-group input:focus,
+            .contact-form .form-group textarea:focus {
+                border-color: #5a2d82;
+                background: #ffffff;
+                box-shadow: 0 5px 15px rgba(90, 45, 130, 0.1);
+                outline: none;
+            }
+
+        .contact-form .form-group textarea {
+            height: 140px;
+            resize: none;
+        }
+
+    .contact-form button[type="submit"] {
+        width: 100%;
+        padding: 1rem;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #5a2d82, #9358a6);
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-transform: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(90, 45, 130, 0.15);
+    }
+
+        .contact-form button[type="submit"]:hover {
+            background: linear-gradient(135deg, #9358a6, #5a2d82);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(90, 45, 130, 0.2);
+        }
+
+        .contact-form button[type="submit"]:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 15px rgba(90, 45, 130, 0.15);
+        }
+
+    .contact-form::after {
+        content: "";
+        position: absolute;
+        bottom: -35px;
+        right: -35px;
+        width: 110px;
+        height: 110px;
+        background: rgba(136, 80, 181, 0.1);
+        border-radius: 50%;
+        transition: transform 0.4s ease;
+    }
+
+    .contact-form:hover::after {
+        transform: scale(1.1);
+    }
+
+
+
+.loyalty-program {
+    padding: 40px;
+    max-width: 80%;
+    margin: 40px auto;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: #f8f8fc;
+    border-radius: 16px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+    /* Тонкие градиентные линии */
+    .loyalty-program::before, .loyalty-program::after {
+        content: "";
+        position: absolute;
+        left: 5%;
+        width: 90%;
+        height: 1px;
+        background: linear-gradient(to right, rgba(102, 51, 153, 0.1), #662D91, rgba(102, 51, 153, 0.1));
+        z-index: 2;
+        opacity: 0.6;
+    }
+
+    .loyalty-program::before {
+        top: 10px;
+    }
+
+    .loyalty-program::after {
+        bottom: 10px;
+    }
+
+    /* Заголовок */
+    .loyalty-program h2 {
+        font-size: 2rem;
+        color: #3a1c5c;
+        font-weight: 700;
+        margin-bottom: 12px;
+        letter-spacing: 0.5px;
+        position: relative;
+        font-family: "Inter", sans-serif;
+    }
+
+    /* Описание */
+    .loyalty-program p {
+        font-size: 1.1rem;
+        color: #5e4560;
+        margin-bottom: 20px;
+        line-height: 1.5;
+        font-weight: 400;
+    }
+
+    /* Список */
+    .loyalty-program ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 15px;
+    }
+
+    .loyalty-program li {
+        background: #fff;
+        color: #3a1c5c;
+        padding: 14px 16px;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        border: 1px solid rgba(102, 51, 153, 0.2);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .loyalty-program li::before {
+            content: "⦿";
+            font-size: 1.3rem;
+            color: #6d28d9;
+        }
+
+    /* Декоративные круги */
+    .loyalty-program .circle {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.15;
+        z-index: 1;
+    }
+
+.circle-1 {
+    width: 90px;
+    height: 90px;
+    background: #6d28d9;
+    top: -25px;
+    left: 10%;
+}
+
+.circle-2 {
+    width: 160px;
+    height: 160px;
+    background: rgba(109, 40, 217, 0.2);
+    bottom: -80px;
+    right: 15%;
+}
+
+.circle-3 {
+    width: 70px;
+    height: 70px;
+    background: rgba(109, 40, 217, 0.1);
+    top: 20%;
+    right: 30%;
+}
+
+.circle-4 {
+    width: 60px;
+    height: 60px;
+    background: rgba(109, 40, 217, 0.15);
+    bottom: 25%;
+    left: 18%;
+}
+
+.circle-5 {
+    width: 110px;
+    height: 110px;
+    background: rgba(109, 40, 217, 0.12);
+    top: 50%;
+    right: 8%;
+}
+
+.circle-6 {
+    width: 80px;
+    height: 80px;
+    background: rgba(109, 40, 217, 0.12);
+    bottom: 12%;
+    right: 28%;
+}
+
+
+/* Контейнер формы */
+.order-form {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    padding: 40px 30px;
+    max-width: 700px;
+    margin: 60px auto;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f4f4f4, #e9eff1);
+}
+
+    /* Заголовок формы */
+    .order-form h1 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #4b2d7f;
+        text-align: center;
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+/* Структура формы */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Стиль для всех меток полей */
+label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: #4b2d7f;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+/* Стиль для всех полей ввода */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+select,
+textarea {
+    padding: 12px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    /* Стиль фокуса для полей ввода */
+    input:focus,
+    select:focus,
+    textarea:focus {
+        outline: none;
+        border-color: #4b2d7f;
+        box-shadow: 0 0 10px rgba(72, 131, 232, 0.3);
+        background-color: #fff;
+    }
+
+/* Стиль для текстовой области */
+textarea {
+    resize: vertical;
+}
+
+/* Стиль для кнопки отправки */
+button[type="submit"] {
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #4b2d7f, #764ea5);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    letter-spacing: 1px;
+}
+
+    /* Эффект при наведении на кнопку */
+    button[type="submit"]:hover {
+        background: linear-gradient(135deg, #3c1d64, #5d3c99);
+        transform: translateY(-3px);
+    }
+
+    /* Эффект при нажатии на кнопку */
+    button[type="submit"]:active {
+        transform: translateY(1px);
+    }
+
+
+
+footer {
+    background-color: #2b0e2f;
+    color: #f4ecfd;
+    padding: 60px 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 1em;
+}
+
+.footer-column {
+    flex: 1 1 200px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.footer-column ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.social-icons img {
+    width: 24px;
+    height: auto;
+}
+
+.footer-column a {
+    color: #f4ecfd;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+    .footer-column a:hover {
+        color: #c3a2ce;
+    }
+
+@media (max-width: 768px) {
+    .top-bar {
+        padding: 1rem 2%;
+    }
+    .logo-container img {
+        width: 120px;
+    }
+    .menu ul {
+        display: none;
+    }
+    .menu-icons {
+        display: flex;
+    }
+    nav.menu ul {
+        flex-direction: column;
+        background-color: #2b0e2f;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 1rem 0;
+        overflow-y: auto;
+    }
+        nav.menu ul li {
+            text-align: center;
+            border-bottom: 1px solid #54425b;
+        }
+    ul.submenu {
+        background-color: #3f2a44;
+    }
+    .cart-icon img {
+        padding-right: 20px;
+    }
+    .card {
+        width: calc(50% - 10px);
+    }
+    .container {
+        padding: 0 10px;
+    }
+    .card-title {
+        font-size: 1.2em;
+    }
+    .card-description {
+        font-size: 0.8em;
+        margin: 0;
+    }
+    .contact-form {
+        max-width: 100%;
+        padding: 1rem;
+    }
+    .contact-form h2 {
+        font-size: 1.5rem;
+    }
+    .contact-form .form-group {
+        margin-bottom: 1rem;
+    }
+    .contact-form button[type="submit"] {
+        margin-top: 1rem;
+    }
+    footer {
+        padding: 40px 2%;
+    }
+}
+
+.info {
+    max-width: 90%;
+    margin: 60px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px;
+    background: #fdfdfd;
+    border-radius: 16px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+    /* Общий стиль секций */
+    .info section {
+        padding: 20px 30px;
+        border-radius: 12px;
+        background: #ffffff;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .info section:hover {
+            transform: translateY(-3px);
+        }
+
+    /* Заголовки секций */
+    .info h2 {
+        font-size: 1.8rem;
+        color: #3a1c5c;
+        font-weight: 700;
+        margin-bottom: 12px;
+        letter-spacing: 0.5px;
+        font-family: "Inter", sans-serif;
+    }
+
+    /* Обычный текст */
+    .info p {
+        font-size: 1rem;
+        color: #5e4560;
+        margin-bottom: 12px;
+        line-height: 1.6;
+        font-weight: 400;
+    }
+
+.faq {
+    padding: 20px 30px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+    /* Заголовок */
+    .faq h2 {
+        font-size: 1.8rem;
+        color: #3a1c5c;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    /* Контейнер для пар "вопрос-ответ" */
+    .faq .qa-pair {
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(106, 46, 147, 0.2); /* Линия-разделитель */
+    }
+
+        .faq .qa-pair:last-child {
+            border-bottom: none; /* У последнего элемента убираем линию */
+        }
+
+    /* Вопрос */
+    .faq p strong {
+        color: #6d28d9;
+        font-size: 1.1rem;
+        display: block;
+        margin-bottom: 6px;
+    }
+
+    /* Ответ */
+    .faq p {
+        font-size: 1rem;
+        color: #5e4560;
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+
+/* Карта */
+.location iframe {
+    width: 100%;
+    height: 300px;
+    border-radius: 12px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.space {
+    padding-top: 60px;
+}
+
+.card-details {
+    text-align: center;
+}
+
+.card-title {
+    margin-bottom: 10px;
+}
+
+.card-description {
+    text-align: center;
+    margin: 0 20px;
+}
+
+.card:hover .card-description {
+    color: #3f2a44;
+}
+
+.order-form {
+    max-width: 600px;
+    margin: 70px auto;
+    padding: 20px;
+    background-color: #f9f3fc;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-form h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.order-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+    .order-form input[type="text"],
+    .order-form textarea,
+    .order-form select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #d8c8e5;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+.order-form button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    display: block;
+    margin-top: 20px;
+    font-size: 1rem;
+}
+
+    .order-form button:hover {
+        background: #3f2a44;
+    }

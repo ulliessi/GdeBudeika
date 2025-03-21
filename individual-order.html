@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Онлайн заказ GdeBydeika</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Индивидуальный заказ для кофейни</title>
+</head>
+<body>
+
+    <header>
+        <div class="top-bar">
+            <!-- Логотип -->
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="log.png" alt="Whimsy Logo">
+                </a>
+            </div>
+
+            <!-- Основное меню -->
+            <nav class="menu">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="katalog.html">Каталог</a></li>
+                    <li><a href="about-us.html">О нас</a></li>
+                </ul>
+            </nav>
+
+            <!-- Кнопка + корзина -->
+            <div class="right-container">
+                <button class="order-button" onclick="location.href='individual-order.html'">Онлайн заказ</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="text">
+        <h2></h2>
+    </div>
+
+    <div class="order-form">
+        <h1>Индивидуальный заказ для кофейни</h1>
+        <form action="submit_order.php" method="post">
+            <label for="first-name">Имя:</label>
+            <input type="text" id="first-name" name="first-name" required>
+
+            <label for="last-name">Фамилия:</label>
+            <input type="text" id="last-name" name="last-name" required>
+
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="coffee-order">Заказ (например, латте, капучино):</label>
+            <input type="text" id="coffee-order" name="coffee-order" required>
+
+            <label for="size-choice">Выбор размера напитка:</label>
+            <select id="size-choice" name="size-choice">
+                <option value="small">Маленький</option>
+                <option value="medium">Средний</option>
+                <option value="large">Большой</option>
+            </select>
+
+            <label for="extra-options">Дополнительные опции (например, сироп, топпинг):</label>
+            <input type="text" id="extra-options" name="extra-options">
+
+            <label for="pickup-method">Способ получения:</label>
+            <select id="pickup-method" name="pickup-method">
+                <option value="takeaway">На вынос</option>
+                <option value="dine-in">В зале</option>
+            </select>
+
+            <label for="special-request">Особые пожелания:</label>
+            <textarea id="special-request" name="special-request" rows="4"></textarea>
+
+            <button type="submit">Отправить заказ</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+
+    <footer>
+        <div class="footer-column contact-info">
+            <h3>Контакты</h3>
+            <p>Телефон: <a href="tel:+375331234567">+375 33 123-45-67</a></p>
+            <p>Email: <a href="mailto:GdeBydeika@gmail.com">GdeBydeika@gmail.com</a></p>
+            <div class="social-icons">
+                <img src="inst.png" onclick="location.href='https://instagram.com';">
+                <img src="tg.png" onclick="location.href='https://telegram.com';">
+                <img src="whatsapp.png" onclick="location.href='https://whatsapp.com';">
+            </div>
+        </div>
+        <div class="footer-column customer-info">
+            <h3>Покупателям</h3>
+            <ul>
+                <li><a href="#">Доставка</a></li>
+                <li><a href="#">Оплата</a></li>
+                <li><a href="#">Возврат и обмен</a></li>
+                <li><a href="#">Техническая поддержка</a></li>
+            </ul>
+        </div>
+        <div class="footer-column about-us">
+            <h3>О нас</h3>
+            <ul>
+                <li><a href="#">Почему мы</a></li>
+                <li><a href="#">Вопросы и ответы</a></li>
+                <li><a href="#">Адреса магазинов</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
