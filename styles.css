@@ -1044,66 +1044,113 @@ header {
    Адаптив для мобильных устройств (до 768px)
    ============================ */
 @media (max-width: 768px) {
-  /* Верхняя шапка – компактная и центрированная */
-  .top-bar {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.5rem 2%;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Основные настройки */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333;
+  background-color: #fff;
+}
+
+/* Шапка сайта */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  background-color: #f8f8f8;
+}
+
+/* Логотип */
+.logo-container {
+  margin-bottom: 10px;
+}
+.logo-container img {
+  width: 80px;
+  height: auto;
+}
+
+/* Вертикальное меню */
+nav.menu {
+  width: 100%;
+}
+nav.menu ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+}
+nav.menu ul li {
+  width: 100%;
+}
+nav.menu ul li a {
+  display: block;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.3s ease;
+}
+nav.menu ul li a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Кнопка "Заказать" */
+.order-button {
+  margin: 10px 0;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.order-button:hover {
+  background-color: #0056b3;
+}
+
+/* Адаптивные стили для экранов до 768px */
+@media (max-width: 768px) {
+  /* Немного уменьшаем базовый размер шрифта для компактности */
+  body {
+    font-size: 13px;
   }
-  
-  /* Логотип – центрированный, уменьшенный для мобильных устройств */
-  .logo-container {
-    text-align: center;
-    width: 100%;
+
+  /* Уменьшаем отступы и размеры шапки */
+  header {
+    padding: 8px 0;
   }
+
+  /* Логотип становится меньше */
   .logo-container img {
-    width: 110px;
+    width: 60px;
   }
-  
-  /* Меню – сразу выводим вертикальный список */
-  nav.menu {
-    width: 100%;
-    margin: 1rem 0;
-  }
-  nav.menu ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    width: 100%;
-    background: #2b0e2f;
-    padding: 0;
-    margin: 0;
-  }
-  nav.menu ul li {
-    width: 100%;
-    text-align: center;
-  }
+
+  /* Плавное уменьшение отступов и размера шрифта у пунктов меню */
   nav.menu ul li a {
-    display: block;
-    padding: 1rem 0;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #f9f3fc;
-    text-decoration: none;
-    /* Разделительная линия под каждым пунктом */
-    border-bottom: 1px solid;
-    border-image: linear-gradient(to right, transparent, #54425b, transparent) 1;
+    padding: 8px 0;
+    font-size: 14px;
   }
-  nav.menu ul li a:hover {
-    color: #c3a2ce;
-  }
-  
-  /* Кнопка "Заказать" – выводим под меню */
+
+  /* Кнопка "Заказать" – подгоняем размеры отступов и шрифт */
   .order-button {
-    margin: 1rem auto;
-    padding: 12px 20px;
-    width: 90%;
-    font-size: 1rem;
-    display: block;
-    text-align: center;
+    margin: 8px 0;
+    padding: 8px 16px;
+    font-size: 14px;
   }
+}
+
   
   /* Карточки товаров – выводим по 2 в ряду */
   .popular-section {
@@ -1114,8 +1161,8 @@ header {
     padding: 1rem;
   }
   .popular-section .card {
-    flex: 0 1 calc(45% - 1rem);
-    max-width: calc(45% - 1rem);
+    flex: 0 1 calc(42% - 1rem);
+    max-width: calc(42% - 1rem);
     margin: 0.5rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
@@ -1128,33 +1175,39 @@ header {
 
 /* Адаптив для очень маленьких экранов (до 480px) */
 @media (max-width: 480px) {
-  /* Общие настройки */
-  html, body {
-    font-size: 0.85rem;
+* {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    box-sizing: border-box;
   }
-  
+
+  /* Основные настройки */
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+    background-color: #fff;
+  }
+
   /* Шапка сайта */
   header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0.5rem 1rem;
-    background-color: #2b0e2f;
+    padding: 10px 0;
+    background-color: #f8f8f8;
   }
-  
+
   /* Логотип */
   .logo-container {
-    text-align: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 10px;
   }
   .logo-container img {
-    width: 100px;
+    width: 80px;
     height: auto;
   }
-  
+
   /* Вертикальное меню */
   nav.menu {
     width: 100%;
@@ -1163,45 +1216,39 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0;
-    margin: 0;
     list-style: none;
-    background-color: #2b0e2f;
   }
   nav.menu ul li {
     width: 100%;
   }
   nav.menu ul li a {
     display: block;
-    padding: 0.75rem 0;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #f9f3fc;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #333;
     text-decoration: none;
     text-align: center;
-    border-bottom: 1px solid #54425b;
+    border-bottom: 1px solid #e0e0e0;
     transition: background-color 0.3s ease;
   }
   nav.menu ul li a:hover {
-    background-color: #3e1a47;
+    background-color: #f0f0f0;
   }
-  
+
   /* Кнопка "Заказать" */
   .order-button {
-    margin: 1rem 0;
+    margin: 10px 0;
     padding: 10px 20px;
-    width: 90%;
-    font-size: 1rem;
-    text-align: center;
-    background-color: #c3a2ce;
-    color: #2b0e2f;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
   .order-button:hover {
-    background-color: #a382b0;
+    background-color: #0056b3;
   }
   
   /* Секция "Популярное" */
@@ -1219,7 +1266,7 @@ header {
     justify-content: space-between;
   }
   .popular-section .card {
-    flex: 0 1 calc(50% - 0.5rem);
+    flex: 0 1 calc(42% - 0.5rem);
     margin-bottom: 1rem;
     background-color: #fff;
     border-radius: 5px;
