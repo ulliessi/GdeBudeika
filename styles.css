@@ -1001,14 +1001,7 @@ header {
     align-items: center;
     margin-right: 70px;
 }
-/* Иконка гамбургера (по умолчанию скрыта) */
-.menu-icons {
-    display: none;
-    font-size: 1.8rem;
-    color: #2b0e2f;
-    cursor: pointer;
-    padding: 0.5rem;
-}
+
 
 /* ============================
    Брейкпоинт для больших экранов (до 1200px)
@@ -1051,34 +1044,34 @@ header {
    Адаптив для мобильных устройств (до 768px)
    ============================ */
 @media (max-width: 768px) {
-  /* Верхняя шапка и навигация */
+  /* Верхняя шапка – компактная и центрированная */
   .top-bar {
-    flex-direction: column;            /* Пункты меню располагаются вертикально */
+    flex-direction: column;
     align-items: center;
     gap: 1rem;
     padding: 0.5rem 2%;
   }
   
-  /* Логотип – центрирование и уменьшение размера */
+  /* Логотип – центрированный, уменьшенный для мобильных устройств */
   .logo-container {
     text-align: center;
     width: 100%;
   }
   .logo-container img {
-    width: 120px;
+    width: 110px;
   }
   
-  /* Верхнее меню – выводим сразу вертикально, без скрытого гамбургера */
+  /* Меню – сразу выводим вертикальный список */
   nav.menu {
     width: 100%;
     margin: 1rem 0;
   }
   nav.menu ul {
     display: flex;
-    flex-direction: column;            /* Вертикальное расположение */
+    flex-direction: column;
     align-items: center;
-    width: 100%;
     gap: 0.5rem;
+    width: 100%;
     background: #2b0e2f;
     padding: 0;
     margin: 0;
@@ -1102,7 +1095,7 @@ header {
     color: #c3a2ce;
   }
   
-  /* Кнопка "Заказать" – выводим по центру под меню */
+  /* Кнопка "Заказать" – выводим под меню */
   .order-button {
     margin: 1rem auto;
     padding: 12px 20px;
@@ -1110,18 +1103,6 @@ header {
     font-size: 1rem;
     display: block;
     text-align: center;
-  }
-  
-  /* Секция "Популярное" – корректируем заголовок и линии-разделители */
-  .popular-section h2,
-  .popular-section-h2 {
-    font-size: 1.8rem;         /* Уменьшаем размер заголовка */
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-  .popular-section-h2::before,
-  .popular-section-h2::after {
-    width: 30%;                /* Уменьшаем длину линий */
   }
   
   /* Карточки товаров – выводим по 2 в ряду */
@@ -1133,8 +1114,8 @@ header {
     padding: 1rem;
   }
   .popular-section .card {
-    flex: 0 1 calc(50% - 1rem);
-    max-width: calc(50% - 1rem);
+    flex: 0 1 calc(45% - 1rem);
+    max-width: calc(45% - 1rem);
     margin: 0.5rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
@@ -1145,41 +1126,120 @@ header {
   }
 }
 
-/* ============================
-   Дополнительный адаптив для очень маленьких экранов (до 480px)
-   ============================ */
+/* Адаптив для очень маленьких экранов (до 480px) */
 @media (max-width: 480px) {
+  /* Общие настройки */
   html, body {
     font-size: 0.85rem;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
   }
+  
+  /* Шапка сайта */
   header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 0.5rem 1rem;
+    background-color: #2b0e2f;
+  }
+  
+  /* Логотип */
+  .logo-container {
+    text-align: center;
+    margin-bottom: 0.5rem;
   }
   .logo-container img {
     width: 100px;
+    height: auto;
+  }
+  
+  /* Вертикальное меню */
+  nav.menu {
+    width: 100%;
+  }
+  nav.menu ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    background-color: #2b0e2f;
+  }
+  nav.menu ul li {
+    width: 100%;
   }
   nav.menu ul li a {
-    font-size: 0.95rem;
+    display: block;
     padding: 0.75rem 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #f9f3fc;
+    text-decoration: none;
+    text-align: center;
+    border-bottom: 1px solid #54425b;
+    transition: background-color 0.3s ease;
   }
+  nav.menu ul li a:hover {
+    background-color: #3e1a47;
+  }
+  
+  /* Кнопка "Заказать" */
   .order-button {
-    padding: 10px 15px;
-    font-size: 0.9rem;
-    width: 95%;
+    margin: 1rem 0;
+    padding: 10px 20px;
+    width: 90%;
+    font-size: 1rem;
+    text-align: center;
+    background-color: #c3a2ce;
+    color: #2b0e2f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
-  .popular-section h2,
-  .popular-section-h2 {
-    font-size: 1.6rem;
+  .order-button:hover {
+    background-color: #a382b0;
   }
-  /* Сохраняем карточки по 2 в ряду, но уменьшаем отступы */
-  .popular-section .card {
-    flex: 0 1 calc(45% - 0.5rem);
-    max-width: calc(45% - 0.5rem);
-    margin: 0.25rem;
-  }
-  /* Дополнительное уменьшение внутренних отступов секций */
-  .seasonal-drinks,
+  
+  /* Секция "Популярное" */
   .popular-section {
-    padding: 15px 5px;
+    padding: 1rem 0.5rem;
+  }
+  .popular-section h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .popular-section .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .popular-section .card {
+    flex: 0 1 calc(50% - 0.5rem);
+    margin-bottom: 1rem;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .popular-section .card img {
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  .popular-section .card-content {
+    padding: 0.5rem;
+  }
+  .popular-section .card h3 {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+  .popular-section .card p {
+    font-size: 0.9rem;
+    color: #666;
   }
 }
