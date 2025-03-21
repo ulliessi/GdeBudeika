@@ -1001,3 +1001,501 @@ header {
     align-items: center;
     margin-right: 70px;
 }
+/*
+=====================================================================
+           ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ, RESET И БАЗОВЫЕ СТИЛИ
+=====================================================================
+*/
+
+/* Объявляем CSS-переменные для удобного управления темой и размерами */
+:root {
+  --transition-speed: 0.3s;
+  --font-base: Arial, sans-serif;
+  --font-size-base: 14px;
+  --color-text: #333;
+  --color-primary: #007bff;
+  --color-primary-hover: #0056b3;
+  --bg-primary: #fff;
+  --bg-header: #f8f8f8;
+  --bg-popular: #fafafa;
+  --border-color: #e0e0e0;
+}
+
+/* Сброс стилей для всех элементов */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Базовые стили body, используя переменные и плавные переходы */
+body {
+  font-family: var(--font-base);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--bg-primary);
+  transition: font-size var(--transition-speed) ease;
+}
+
+/*
+=====================================================================
+           ШАПКА И ВЕРХНЕЕ МЕНЮ
+=====================================================================
+*/
+
+/* Основной контейнер шапки */
+header {
+  display: flex;
+  flex-direction: column;             /* По умолчанию вертикальное расположение элементов */
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  background-color: var(--bg-header);
+  border-bottom: 1px solid var(--border-color);
+  position: relative;                 /* Необходим для абсолютного позиционирования гамбургера */
+  transition: padding var(--transition-speed) ease, flex-direction var(--transition-speed) ease;
+}
+
+/* Контейнер логотипа */
+.logo-container {
+  margin-bottom: 12px;
+  transition: margin-bottom var(--transition-speed) ease;
+}
+.logo-container img {
+  display: block;
+  width: 80px;
+  height: auto;
+  transition: width var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+/* --- Настройка мобильного меню: гамбургер и переключатель --- */
+
+/* Скрытый чекбокс для управления отображением меню */
+.nav-toggle {
+  display: none;
+}
+
+/* Гамбургер иконка – по умолчанию скрыта, показывается на мобильных устройствах */
+.hamburger-icon {
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  z-index: 10;
+  transition: transform var(--transition-speed) ease;
+}
+/* Стилизация линий гамбургера */
+.hamburger-icon span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-text);
+  margin: 4px 0;
+  transition: all var(--transition-speed) ease;
+}
+
+/* Основное меню навигации */
+nav.menu {
+  width: 100%;
+  transition: all var(--transition-speed) ease;
+}
+
+/* Стилизация списка меню */
+nav.menu ul {
+  display: flex;
+  flex-direction: column;             /* Вертикальное меню для мобильников */
+  align-items: center;
+  list-style: none;
+  width: 100%;
+}
+
+/* Элементы списка меню */
+nav.menu ul li {
+  width: 100%;
+}
+
+/* Ссылки меню */
+nav.menu ul li a {
+  display: block;
+  padding: 12px 0;
+  font-size: 16px;
+  color: var(--color-text);
+  text-decoration: none;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color var(--transition-speed) ease,
+              padding var(--transition-speed) ease,
+              font-size var(--transition-speed) ease;
+}
+nav.menu ul li a:hover,
+nav.menu ul li a:focus {
+  background-color: #f0f0f0;
+}
+
+/*
+=====================================================================
+           РАЗДЕЛ "ПОПУЛЯРНОЕ"
+=====================================================================
+*/
+
+section.popular {
+  padding: 20px;
+  background-color: var(--bg-popular);
+  transition: padding var(--transition-speed) ease;
+  margin-top: 20px;
+}
+
+/* Заголовок раздела */
+section.popular h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--color-text);
+  transition: font-size var(--transition-speed) ease;
+}
+
+/* Сетка для популярных элементов с использованием CSS Grid */
+section.popular .popular-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  transition: grid-template-columns var(--transition-speed) ease,
+              gap var(--transition-speed) ease;
+}
+
+/* Отдельная карточка популярного элемента */
+section.popular .popular-item {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 15px;
+  text-align: center;
+  transition: transform var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease,
+              padding var(--transition-speed) ease;
+}
+section.popular .popular-item:hover,
+section.popular .popular-item:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+/* Изображения внутри карточек */
+section.popular .popular-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+/*
+=====================================================================
+           КНОПКА "ЗАКАЗАТЬ"
+=====================================================================
+*/
+.order-button {
+  display: inline-block;
+  margin: 15px auto;
+  padding: 12px 24px;
+  font-size: 16px;
+  color: #fff;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease,
+              padding var(--transition-speed) ease,
+              font-size var(--transition-speed) ease;
+}
+.order-button:hover,
+.order-button:focus {
+  background-color: var(--color-primary-hover);
+}
+
+/*
+=====================================================================
+           ПЕРЕХОДЫ И АНИМАЦИИ
+=====================================================================
+*/
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*
+=====================================================================
+           РЕСПОНСИВНЫЕ СТИЛИ
+=====================================================================
+*/
+
+/* -------------------------------------------------------
+   Extra Small Devices (макс. 320px) – ультракопактные телефоны
+--------------------------------------------------------- */
+@media (max-width: 320px) {
+  body {
+    font-size: 12px;
+  }
+  header {
+    padding: 10px 5px;
+  }
+  .logo-container {
+    margin-bottom: 8px;
+  }
+  .logo-container img {
+    width: 55px;
+  }
+  nav.menu ul li a {
+    padding: 10px 0;
+    font-size: 14px;
+  }
+  section.popular {
+    padding: 12px;
+  }
+  section.popular h2 {
+    font-size: 18px;
+  }
+  section.popular .popular-items {
+    grid-template-columns: 1fr;  /* Одна колонка на очень узких экранах */
+    gap: 10px;
+  }
+  .order-button {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+}
+
+/* -------------------------------------------------------
+   Small Devices (321px - 480px) – стандартные телефоны и мини планшеты
+--------------------------------------------------------- */
+@media (min-width: 321px) and (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+  header {
+    padding: 10px 10px;
+  }
+  .logo-container {
+    margin-bottom: 10px;
+  }
+  .logo-container img {
+    width: 60px;
+  }
+  nav.menu ul li a {
+    padding: 10px 0;
+    font-size: 15px;
+  }
+  section.popular {
+    padding: 15px;
+  }
+  section.popular h2 {
+    font-size: 20px;
+  }
+  section.popular .popular-items {
+    grid-template-columns: repeat(2, 1fr);  /* Две колонки для небольших экранов */
+    gap: 12px;
+  }
+  .order-button {
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+}
+
+/* -------------------------------------------------------
+   Medium Devices (481px - 768px) – планшеты, большинство смартфонов
+   Здесь реализована мобильная версия с гамбургер‑меню
+--------------------------------------------------------- */
+@media (min-width: 481px) and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  /* Переход шапки в горизонтальное расположение */
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+  }
+  .logo-container {
+    margin-bottom: 0;
+  }
+  .logo-container img {
+    width: 70px;
+  }
+  /* Гамбургер иконка – показываем только на устройствах до 768px */
+  .hamburger-icon {
+    display: block;
+  }
+  /* Скрываем полное меню, открываем его при нажатии */
+  nav.menu {
+    display: none;
+    position: absolute;
+    top: 60px;           /* Располагаем меню ниже шапки */
+    left: 0;
+    right: 0;
+    background-color: var(--bg-header);
+    z-index: 9;
+  }
+  /* Когда чекбокс активен, отображаем меню */
+  .nav-toggle:checked + .hamburger-icon + nav.menu {
+    display: block;
+    animation: slideDown var(--transition-speed) ease;
+  }
+  /* Организация списка мобильного меню */
+  nav.menu ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav.menu ul li a {
+    width: 100%;
+    text-align: left;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  section.popular {
+    padding: 18px;
+  }
+  section.popular h2 {
+    font-size: 22px;
+  }
+  section.popular .popular-items {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 14px;
+  }
+  .order-button {
+    padding: 11px 22px;
+    font-size: 16px;
+  }
+}
+
+/* -------------------------------------------------------
+   Large Devices (769px - 1024px) – планшеты в ландшафтной ориентации, ноутбуки
+--------------------------------------------------------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  body {
+    font-size: 15px;
+  }
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+  }
+  .logo-container {
+    margin-bottom: 0;
+  }
+  .logo-container img {
+    width: 75px;
+  }
+  /* Отключаем гамбургер – показываем горизонтальное меню */
+  .hamburger-icon {
+    display: none;
+  }
+  nav.menu {
+    display: block;
+    position: static;
+  }
+  nav.menu ul {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  nav.menu ul li {
+    width: auto;
+    margin-left: 20px;
+  }
+  nav.menu ul li a {
+    padding: 12px 18px;
+    font-size: 16px;
+    text-align: center;
+  }
+  section.popular {
+    padding: 25px 30px;
+  }
+  section.popular h2 {
+    font-size: 24px;
+  }
+  section.popular .popular-items {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+  .order-button {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+}
+
+/* -------------------------------------------------------
+   Extra Large Devices (1025px и выше) – десктопы и большие экраны
+--------------------------------------------------------- */
+@media (min-width: 1025px) {
+  body {
+    font-size: 16px;
+  }
+  header {
+    padding: 20px 40px;
+  }
+  .logo-container img {
+    width: 100px;
+  }
+  /* Горизонтальное меню с увеличенными отступами */
+  nav.menu ul {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  nav.menu ul li {
+    margin-left: 25px;
+  }
+  nav.menu ul li a {
+    font-size: 18px;
+    padding: 14px 22px;
+  }
+  section.popular {
+    padding: 40px 60px;
+  }
+  section.popular h2 {
+    font-size: 28px;
+  }
+  section.popular .popular-items {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+  }
+  .order-button {
+    padding: 15px 30px;
+    font-size: 18px;
+  }
+}
+
+/*
+=====================================================================
+           ДОСТУПНОСТЬ И FOCUS-СОСТОЯНИЯ
+=====================================================================
+*/
+a:focus,
+button:focus {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Убираем эффекты hover для устройств без поддержки hover (сенсорные экраны) */
+@media (hover: none) {
+  nav.menu ul li a:hover,
+  .order-button:hover {
+    background-color: transparent;
+  }
+}
+
+/*
+=====================================================================
+            КОНЕЦ ФАЙЛА – ВСЕ ЭЛЕМЕНТЫ ТЩАТЕЛЬНО ПРОРАБОТАНЫ
+=====================================================================
+*/
