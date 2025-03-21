@@ -27,7 +27,6 @@ header {
     transition: background 0.3s ease;
 }
 
-/* Контейнер верхнего меню */
 .top-bar {
     display: flex;
     align-items: center;
@@ -35,17 +34,15 @@ header {
     gap: 2rem;
 }
 
-/* Логотип */
 .logo-container img {
     width: 145px;
     height: auto;
     transition: transform 0.3s ease;
     margin-bottom: 5px;
 }
-
-    .logo-container img:hover {
-        transform: scale(1.03);
-    }
+.logo-container img:hover {
+    transform: scale(1.03);
+}
 
 .menu ul {
     list-style: none;
@@ -55,27 +52,25 @@ header {
     gap: 4rem; 
 }
 
-    .menu ul li a {
-        font-family: 'Roboto', sans-serif;
-        font-size: 1.1rem;
-        font-weight: bold;
-        color: #2b0e2f;
-        text-decoration: none;
-        padding: 0.5rem 1rem;
-        border-radius: 5px;
-        transition: all 0.3s ease;
-        position: relative;
-    }
+.menu ul li a {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #2b0e2f;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+.menu ul li a:hover {
+    color: #fff;
+    background-color: #c3a2ce;
+    box-shadow: 0px 3px 10px rgba(195, 162, 206, 0.5);
+}
 
-        .menu ul li a:hover {
-            color: #fff;
-            background-color: #c3a2ce;
-            box-shadow: 0px 3px 10px rgba(195, 162, 206, 0.5);
-        }
-
-/* Кнопка "Заказать" */
 .order-button {
-    background: #8f6da8; /* Лавандовый цвет */
+    background: #8f6da8;
     color: white;
     font-size: 1rem;
     font-weight: bold;
@@ -87,50 +82,27 @@ header {
     box-shadow: 0px 4px 10px rgba(157, 123, 189, 0.5);
     margin-right: 70px;
 }
+.order-button:hover {
+    background: #8765a6;
+    box-shadow: 0px 6px 15px rgba(135, 101, 166, 0.7);
+    transform: scale(1.05);
+}
 
-
-    .order-button:hover {
-        background: #8765a6;
-        box-shadow: 0px 6px 15px rgba(135, 101, 166, 0.7);
-        transform: scale(1.05);
-    }
-
-
-/* Контейнер кнопки и корзины */
 .right-container {
     display: flex;
     align-items: center;
     margin-right: 70px;
 }
 
-/* Стили для иконки "гамбургера" (открытие мобильного меню) */
+/* Иконка гамбургера – скрыта на десктопе */
 .menu-icons {
-    display: none; /* по умолчанию скрыта на десктопе */
+    display: none;
     font-size: 1.8rem;
     color: #2b0e2f;
     cursor: pointer;
     padding: 0.5rem;
 }
 
-/* Адаптивные стили для мобильной версии */
-@media (max-width: 768px) {
-    /* Показываем иконку гамбургера */
-    .menu-icons {
-        display: block;
-    }
-    
-    /* Скрываем стандартное горизонтальное меню */
-    nav.menu ul {
-        display: none;
-        flex-direction: column;
-        background: #2b0e2f;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        z-index: 1001;
-    }
-    
     /* Активное меню (например, при добавлении класса .mobile-active) */
     nav.menu.mobile-active ul {
         display: flex;
@@ -947,36 +919,162 @@ footer {
     .order-form button:hover {
         background: #3f2a44;
     }
+/* ============================
+   Глобальные стили
+   ============================ */
+html, body {
+    overflow-x: hidden; /* Отключаем горизонтальную прокрутку */
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
 /* ============================
-   Адаптивные стили для мобильных устройств
+   Базовые стили для десктопа
+   ============================ */
+header {
+    background: linear-gradient(90deg, #f9f3fc, #e8d9f1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 1rem 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background 0.3s ease;
+}
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+.logo-container img {
+    width: 145px;
+    height: auto;
+    transition: transform 0.3s ease;
+    margin-bottom: 5px;
+}
+.logo-container img:hover {
+    transform: scale(1.03);
+}
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 4rem;
+}
+.menu ul li a {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #2b0e2f;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+.menu ul li a:hover {
+    color: #fff;
+    background-color: #c3a2ce;
+    box-shadow: 0 3px 10px rgba(195,162,206,0.5);
+}
+.order-button {
+    background: #8f6da8;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 27px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(157,123,189,0.5);
+    margin-right: 70px;
+}
+.order-button:hover {
+    background: #8765a6;
+    box-shadow: 0 6px 15px rgba(135,101,166,0.7);
+    transform: scale(1.05);
+}
+.right-container {
+    display: flex;
+    align-items: center;
+    margin-right: 70px;
+}
+/* Иконка гамбургера (по умолчанию скрыта) */
+.menu-icons {
+    display: none;
+    font-size: 1.8rem;
+    color: #2b0e2f;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+/* ============================
+   Брейкпоинт для больших экранов (до 1200px)
+   ============================ */
+@media (max-width: 1200px) {
+    html, body {
+        font-size: 1rem; /* Немного корректируем базовый размер */
+    }
+    header {
+        padding: 0.9rem 4.5%;
+    }
+    .order-button {
+        margin-right: 50px;
+    }
+    .menu ul li a {
+        font-size: 1.05rem;
+    }
+}
+
+/* ============================
+   Брейкпоинт для планшетов (до 1024px)
+   ============================ */
+@media (max-width: 1024px) {
+    html, body {
+        font-size: 0.95rem;
+    }
+    header {
+        padding: 0.75rem 4%;
+    }
+    .order-button {
+        padding: 10px 25px;
+        margin-right: 40px;
+    }
+    .menu ul li a {
+        font-size: 1.05rem;
+    }
+}
+
+/* ============================
+   Адаптив для мобильных устройств (до 768px)
    ============================ */
 @media (max-width: 768px) {
+    html, body {
+        font-size: 0.9rem;
+        overflow-x: hidden;
+    }
     /* Шапка и верхнее меню */
     header {
         padding: 0.5rem 2%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         flex-wrap: wrap;
-        background: linear-gradient(90deg, #f9f3fc, #e8d9f1);
     }
     .top-bar {
         width: 100%;
-        display: flex;
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
-    /* Скрываем основное меню и выводим иконку меню (гамбургер) */
+    /* Скрываем горизонтальное меню и показываем гамбургер */
     nav.menu ul {
         display: none;
     }
     .menu-icons {
         display: block;
-        cursor: pointer;
-        /* Размер и отступ для иконки можно настроить дополнительно */
+        margin-right: 1rem;
     }
-    /* При активации мобильного меню (например, добавлением класса .mobile-active) */
+    /* Раскрытое мобильное меню */
     nav.menu.mobile-active ul {
         display: flex;
         flex-direction: column;
@@ -986,122 +1084,96 @@ footer {
         left: 0;
         background: #2b0e2f;
         padding: 1rem 0;
-        z-index: 999;
+        z-index: 1001;
     }
     nav.menu.mobile-active ul li {
-        text-align: center;
-        border-bottom: 1px solid #54425b;
         padding: 0.75rem 0;
+        text-align: center;
+        border-bottom: 1px solid;
+        border-image: linear-gradient(to right, transparent, #54425b, transparent) 1;
     }
     nav.menu.mobile-active ul li a {
-        font-size: 1.2rem;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #f9f3fc;
+        text-decoration: none;
+        transition: color 0.3s ease;
         padding: 0.5rem 0;
     }
-    
-    /* Кнопка "Заказать" */
+    nav.menu.mobile-active ul li a:hover {
+        color: #c3a2ce;
+    }
+    /* Кнопка "Заказать" для мобильной версии */
     .order-button {
         margin: 10px auto;
-        padding: 12px 20px;
+        padding: 10px 20px;
         width: 90%;
         display: block;
         text-align: center;
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
-    
-    /* Слайдер и фон */
-    .slideshow {
-        padding-top: 60px; /* Отступ сверху, чтобы шапка не перекрывала контент */
+    /* Секция сезонных напитков – уменьшение заголовков и отступов */
+    .seasonal-drinks {
+        padding: 20px 10px;
     }
-    .background-image {
-        width: 100%;
-        height: auto;
+    .seasonal-drinks h2 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 1rem;
     }
-    
-    /* Секция "Популярное" и карточки товаров */
+    /* Карточки – 2 в ряду */
     .popular-section {
-        flex-direction: column;
-        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
         padding: 20px 10px;
     }
     .card {
-        flex: 1 1 100%;
-        margin: 10px 0;
-        max-width: 95%;
+        flex: 0 1 calc(50% - 20px); /* две карточки в строке */
+        margin: 10px;
+        max-width: calc(50% - 20px);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    
-    /* Форма обратной связи */
-    .contact-form {
-        max-width: 95%;
-        padding: 1.5rem;
-        margin: 80px auto;
-    }
-    
-    /* Секции информационных блоков и FAQ */
-    .info, .faq {
-        max-width: 95%;
-        padding: 20px 10px;
-        margin: 20px auto;
-    }
-    
-    /* Форма заказа (если используется отдельно) */
-    .order-form {
-        max-width: 95%;
-        padding: 20px;
-        margin: 70px auto;
-    }
-    
-    /* Футер */
-    footer {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 40px 5%;
-    }
-    .footer-column {
-        margin-bottom: 20px;
-        align-items: center;
-    }
-    .social-icons {
-        justify-content: center;
-    }
-    
-    /* Дополнительная настройка шрифтов и отступов для улучшенной читаемости */
-    body {
-        font-size: 1rem;
-    }
-    .popular-section h2,
-    .info h2,
-    .faq h2 {
-        font-size: 1.5rem;
-        text-align: center;
-    }
-    
-    /* Если используются декоративные элементы или псевдоэлементы, их можно скрыть или уменьшить */
-    .popular-section::before {
-        display: none;
+    .card img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
     }
 }
 
 /* ============================
-   Дополнительные адаптивные правки для очень маленьких экранов (до 480px)
+   Адаптив для очень маленьких экранов (до 480px)
    ============================ */
 @media (max-width: 480px) {
-    /* Уменьшаем отступы и размеры шрифтов */
+    html, body {
+        font-size: 0.85rem;
+    }
     header {
-        padding: 0.5rem 1.5%;
-    }
-    .order-button {
-        padding: 10px 15px;
-        font-size: 1rem;
-    }
-    .contact-form,
-    .order-form,
-    .info,
-    .faq {
-        padding: 1rem;
+        padding: 0.5rem 1rem;
     }
     .menu-icons {
         font-size: 1.5rem;
     }
+    .order-button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    /* Заголовки секций – ещё меньше для компактности */
+    .seasonal-drinks h2,
+    .popular-section h2 {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+    /* Карточки: переход на один столбец */
+    .card {
+        flex: 0 1 calc(100% - 20px);
+        max-width: calc(100% - 20px);
+        margin: 10px auto;
+    }
+    /* Дополнительное уменьшение внутренних отступов секций */
+    .seasonal-drinks,
+    .popular-section {
+        padding: 15px 5px;
+    }
 }
-
