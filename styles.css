@@ -742,71 +742,6 @@ footer {
         color: #c3a2ce;
     }
 
-@media (max-width: 768px) {
-    .top-bar {
-        padding: 1rem 2%;
-    }
-    .logo-container img {
-        width: 120px;
-    }
-    .menu ul {
-        display: none;
-    }
-    .menu-icons {
-        display: flex;
-    }
-    nav.menu ul {
-        flex-direction: column;
-        background-color: #2b0e2f;
-        position: fixed;
-        top: 60px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        padding: 1rem 0;
-        overflow-y: auto;
-    }
-        nav.menu ul li {
-            text-align: center;
-            border-bottom: 1px solid #54425b;
-        }
-    ul.submenu {
-        background-color: #3f2a44;
-    }
-    .cart-icon img {
-        padding-right: 20px;
-    }
-    .card {
-        width: calc(50% - 10px);
-    }
-    .container {
-        padding: 0 10px;
-    }
-    .card-title {
-        font-size: 1.2em;
-    }
-    .card-description {
-        font-size: 0.8em;
-        margin: 0;
-    }
-    .contact-form {
-        max-width: 100%;
-        padding: 1rem;
-    }
-    .contact-form h2 {
-        font-size: 1.5rem;
-    }
-    .contact-form .form-group {
-        margin-bottom: 1rem;
-    }
-    .contact-form button[type="submit"] {
-        margin-top: 1rem;
-    }
-    footer {
-        padding: 40px 2%;
-    }
-}
-
 .info {
     max-width: 90%;
     margin: 60px auto;
@@ -969,3 +904,161 @@ footer {
     .order-form button:hover {
         background: #3f2a44;
     }
+
+/* ============================
+   Адаптивные стили для мобильных устройств
+   ============================ */
+@media (max-width: 768px) {
+    /* Шапка и верхнее меню */
+    header {
+        padding: 0.5rem 2%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        background: linear-gradient(90deg, #f9f3fc, #e8d9f1);
+    }
+    .top-bar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    /* Скрываем основное меню и выводим иконку меню (гамбургер) */
+    nav.menu ul {
+        display: none;
+    }
+    .menu-icons {
+        display: block;
+        cursor: pointer;
+        /* Размер и отступ для иконки можно настроить дополнительно */
+    }
+    /* При активации мобильного меню (например, добавлением класса .mobile-active) */
+    nav.menu.mobile-active ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #2b0e2f;
+        padding: 1rem 0;
+        z-index: 999;
+    }
+    nav.menu.mobile-active ul li {
+        text-align: center;
+        border-bottom: 1px solid #54425b;
+        padding: 0.75rem 0;
+    }
+    nav.menu.mobile-active ul li a {
+        font-size: 1.2rem;
+        padding: 0.5rem 0;
+    }
+    
+    /* Кнопка "Заказать" */
+    .order-button {
+        margin: 10px auto;
+        padding: 12px 20px;
+        width: 90%;
+        display: block;
+        text-align: center;
+        font-size: 1.1rem;
+    }
+    
+    /* Слайдер и фон */
+    .slideshow {
+        padding-top: 60px; /* Отступ сверху, чтобы шапка не перекрывала контент */
+    }
+    .background-image {
+        width: 100%;
+        height: auto;
+    }
+    
+    /* Секция "Популярное" и карточки товаров */
+    .popular-section {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 10px;
+    }
+    .card {
+        flex: 1 1 100%;
+        margin: 10px 0;
+        max-width: 95%;
+    }
+    
+    /* Форма обратной связи */
+    .contact-form {
+        max-width: 95%;
+        padding: 1.5rem;
+        margin: 80px auto;
+    }
+    
+    /* Секции информационных блоков и FAQ */
+    .info, .faq {
+        max-width: 95%;
+        padding: 20px 10px;
+        margin: 20px auto;
+    }
+    
+    /* Форма заказа (если используется отдельно) */
+    .order-form {
+        max-width: 95%;
+        padding: 20px;
+        margin: 70px auto;
+    }
+    
+    /* Футер */
+    footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 40px 5%;
+    }
+    .footer-column {
+        margin-bottom: 20px;
+        align-items: center;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+    
+    /* Дополнительная настройка шрифтов и отступов для улучшенной читаемости */
+    body {
+        font-size: 1rem;
+    }
+    .popular-section h2,
+    .info h2,
+    .faq h2 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    
+    /* Если используются декоративные элементы или псевдоэлементы, их можно скрыть или уменьшить */
+    .popular-section::before {
+        display: none;
+    }
+}
+
+/* ============================
+   Дополнительные адаптивные правки для очень маленьких экранов (до 480px)
+   ============================ */
+@media (max-width: 480px) {
+    /* Уменьшаем отступы и размеры шрифтов */
+    header {
+        padding: 0.5rem 1.5%;
+    }
+    .order-button {
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
+    .contact-form,
+    .order-form,
+    .info,
+    .faq {
+        padding: 1rem;
+    }
+    .menu-icons {
+        font-size: 1.5rem;
+    }
+}
+
