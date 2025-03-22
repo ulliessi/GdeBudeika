@@ -932,95 +932,38 @@ footer {
     .order-form button:hover {
         background: #3f2a44;
     }
-/* ============================
-   Глобальные стили
-   ============================ */
-html, body {
-    overflow-x: hidden; /* Отключаем горизонтальную прокрутку */
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-}
 
-/* ============================
-   Базовые стили для десктопа
-   ============================ */
-header {
-    background: linear-gradient(90deg, #f9f3fc, #e8d9f1);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    padding: 1rem 5%;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    transition: background 0.3s ease;
-}
-.top-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-}
-.logo-container img {
-    width: 145px;
-    height: auto;
-    transition: transform 0.3s ease;
-    margin-bottom: 5px;
-}
-.logo-container img:hover {
-    transform: scale(1.03);
-}
-.menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 4rem;
-}
-.menu ul li a {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #2b0e2f;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
-.menu ul li a:hover {
-    color: #fff;
-    background-color: #c3a2ce;
-    box-shadow: 0 3px 10px rgba(195,162,206,0.5);
-}
-.order-button {
-    background: #8f6da8;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 10px 27px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-    box-shadow: 0 4px 10px rgba(157,123,189,0.5);
-    margin-right: 70px;
-}
-.order-button:hover {
-    background: #8765a6;
-    box-shadow: 0 6px 15px rgba(135,101,166,0.7);
-    transform: scale(1.05);
-}
-.right-container {
-    display: flex;
-    align-items: center;
-    margin-right: 70px;
-}
+@media (max-width: 992px) {
+    body {
+        font-size: 90%;
+    }
+    .logo-container img {
+        width: 120px;
+    }
+    .menu ul {
+        gap: 2rem;
+    }
+    .order-button {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+    .popular-section h2 {
+        font-size: 2rem;
+    }
 
 @media (max-width: 768px) {
-    .top-bar {
+    body {
+        font-size: 85%;
+    }
+    .popular-section h2 {
+        font-size: 1.8rem;
+    }
+    
+ .top-bar {
         padding: 1rem 2%;
     }
     .logo-container img {
-        width: 80px;
+        width: 120px;
     }
     .menu ul {
         display: none;
@@ -1030,6 +973,7 @@ header {
     }
     nav.menu ul {
         flex-direction: column;
+        background-color: #292929;
         position: fixed;
         top: 60px;
         left: 0;
@@ -1049,7 +993,7 @@ header {
         padding-right: 20px;
     }
     .card {
-        width: calc(47% - 10px);
+        width: calc(50% - 10px);
     }
     .container {
         padding: 0 10px;
@@ -1061,100 +1005,44 @@ header {
         font-size: 0.8em;
         margin: 0;
     }
-    .contact-form {
-        max-width: 100%;
-        padding: 1rem;
+
+@media (max-width: 576px) {
+    body {
+        font-size: 80%;
     }
-    .contact-form h2 {
+    .logo-container img {
+        width: 100px;
+    }
+    .menu-icons {
+        display: block;
+    }
+    .menu ul {
+        display: none;
+    }
+    .order-button {
+        font-size: 0.8rem;
+        padding: 6px 15px;
+    }
+    .popular-section h2 {
         font-size: 1.5rem;
     }
-    .contact-form .form-group {
-        margin-bottom: 1rem;
-    }
-    .contact-form button[type="submit"] {
-        margin-top: 1rem;
-    }
-    footer {
-        padding: 40px 2%;
+    .card {
+        flex: 0 1 100%;
     }
 }
 
-.info {
-    padding-top: 80px;
-    padding-left: 30px;
-}
-
-.location {
-    padding: 20px;
-}
-
-.location iframe {
-    width: 100%;
-    height: 400px;
-    border: none;
-    margin-top: 20px;
-}
-
-.space {
-    padding-top: 60px;
-}
-
-.card-details {
-    text-align: center;
-}
-
-.card-title {
-    margin-bottom: 10px;
-}
-
-.card-description {
-    text-align: center;
-    margin: 0 20px;
-}
-
-.order-form {
-    max-width: 600px;
-    margin: 70px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.order-form h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.order-form label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.order-form input[type="text"],
-.order-form textarea,
-.order-form select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-.order-form button {
-    background-color: #000;
-     border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    display: block;
-    margin-top: 20px;
-    font-size: 1rem;
-}
-
-.order-form button:hover {
-    background: #333;
+@media (max-width: 320px) {
+    body {
+        font-size: 75%;
+    }
+    .logo-container img {
+        width: 80px;
+    }
+    .order-button {
+        font-size: 0.7rem;
+        padding: 5px 10px;
+    }
+    .popular-section h2 {
+        font-size: 1.2rem;
+    }
 }
