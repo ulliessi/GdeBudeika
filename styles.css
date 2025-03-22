@@ -1,4 +1,4 @@
-﻿html, body {
+html, body {
     width: 100vw; /* Ширина равна 100% ширины окна браузера */
     min-height: 100vh; /* Минимальная высота равна 100% высоты окна браузера */
     margin: 0; /* Убираем стандартные внешние отступы */
@@ -16,62 +16,57 @@ body {
 
 /* Общее оформление хедера */
 /* Общие стили шапки */
+/* Сбрасываем базовые стили header */
 header {
-    background: linear-gradient(90deg, #f9f3fc, #e8d9f1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 1rem 5%;
-    position: fixed;
     width: 100%;
+    position: fixed;
     top: 0;
     z-index: 1000;
-    transition: background 0.3s ease;
+    /* Фон + тень (можно убрать, если уже есть в .top-bar) */
+    background: linear-gradient(90deg, #f9f3fc, #e8d9f1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Верхняя полоса с гамбургером, логотипом и кнопкой */
 .top-bar {
-    display: flex;
+    /* Используем сетку, чтобы логотип был по центру */
+    display: grid;
+    grid-template-columns: auto 1fr auto; /* Левая колонка, середина, правая */
     align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
+    padding: 10px 5%;
 }
 
-.logo-container img {
-    width: 145px;
-    height: auto;
-    transition: transform 0.3s ease;
-    margin-bottom: 5px;
-}
-.logo-container img:hover {
-    transform: scale(1.03);
-}
-
-.menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 4rem; 
-}
-
-.menu ul li a {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.1rem;
-    font-weight: bold;
+/* Гамбургер (три палочки) */
+.menu-toggle {
+    font-size: 24px;
+    cursor: pointer;
     color: #2b0e2f;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    position: relative;
 }
-.menu ul li a:hover {
-    color: #fff;
-    background-color: #c3a2ce;
-    box-shadow: 0px 3px 10px rgba(195, 162, 206, 0.5);
+
+/* Логотип по центру */
+.logo-container {
+    text-align: center;
+}
+
+    .logo-container img {
+        width: 145px; /* при необходимости меняй размер */
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+        .logo-container img:hover {
+            transform: scale(1.03);
+        }
+
+/* Кнопка "Онлайн заказ" справа */
+.right-container {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .order-button {
     background: #8f6da8;
-    color: white;
+    color: #fff;
     font-size: 1rem;
     font-weight: bold;
     padding: 10px 27px;
@@ -80,75 +75,49 @@ header {
     cursor: pointer;
     transition: 0.3s ease-in-out;
     box-shadow: 0px 4px 10px rgba(157, 123, 189, 0.5);
-    margin-right: 70px;
-}
-.order-button:hover {
-    background: #8765a6;
-    box-shadow: 0px 6px 15px rgba(135, 101, 166, 0.7);
-    transform: scale(1.05);
 }
 
-.right-container {
-    display: flex;
-    align-items: center;
-    margin-right: 70px;
-}
+    .order-button:hover {
+        background: #8765a6;
+        box-shadow: 0px 6px 15px rgba(135, 101, 166, 0.7);
+        transform: scale(1.05);
+    }
 
-/* Иконка гамбургера – скрыта на десктопе */
-.menu-checkbox {
-    display: none;
-}
-
-/* Иконка меню */
-.menu-icon {
-    display: none;
-    font-size: 2rem;
-    cursor: pointer;
+/* Выплывающее меню (скрыто по умолчанию) */
+.mobile-menu {
+    display: none; /* По умолчанию спрятано */
     position: absolute;
-    top: 15px;
-    right: 15px;
-    z-index: 1100;
+    top: 60px; /* чуть ниже .top-bar */
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Стили для меню */
-.menu {
-    display: flex;
-    gap: 2rem;
-}
+    .mobile-menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
 
-    /* Активное меню (например, при добавлении класса .mobile-active) */
-    nav.menu.mobile-active ul {
-        display: flex;
+    .mobile-menu li {
+        border-bottom: 1px solid #ddd;
     }
-    
-    /* Стили для каждого пункта меню */
-    nav.menu.mobile-active ul li {
-        text-align: center;
-        padding: 1rem 0;
-        position: relative;
-    }
-    
-    nav.menu.mobile-active ul li a {
-        font-family: 'Roboto', sans-serif;
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: #f9f3fc;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-    
-    nav.menu.mobile-active ul li a:hover {
-        color: #c3a2ce;
-    }
-    
-    /* Разделительные линии между пунктами меню */
-    nav.menu.mobile-active ul li + li {
-        border-top: 1px solid;
-        /* Градиентная линия: с двух сторон прозрачность, посередине цвет */
-        border-image: linear-gradient(to right, transparent, #54425b, transparent) 1;
-    }
-}
 
+        .mobile-menu li a {
+            display: block;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2b0e2f;
+            text-decoration: none;
+            padding: 15px;
+            text-align: center;
+        }
+
+    /* Активный класс - показываем меню */
+    .mobile-menu.active {
+        display: block;
+    }
 
 
 .slideshow {
@@ -946,6 +915,7 @@ footer {
     .order-button {
         padding: 8px 20px;
         font-size: 0.9rem;
+        margin-right: 20px;
     }
     .popular-section h2 {
         font-size: 2rem;
@@ -954,9 +924,6 @@ footer {
 @media (max-width: 768px) {
     body {
         font-size: 85%;
-    }
-    .popular-section h2 {
-        font-size: 1.8rem;
     }
     
  .top-bar {
@@ -970,6 +937,17 @@ footer {
     }
     .menu-icons {
         display: flex;
+    }
+.popular-section-h2 {
+            font-size: 1.3em; /* уменьшенный размер шрифта */
+            padding-left: 15px; /* уменьшенный отступ слева */
+        }
+
+            .popular-section-h2::before,
+            .popular-section-h2::after {
+                width: 30%; /* уменьшенная длина линий */
+                height: 0.8px; /* чуть тоньше линии */
+            }
     }
    
 
@@ -989,13 +967,22 @@ footer {
     .order-button {
         font-size: 0.8rem;
         padding: 6px 15px;
+        margin-right: 20px;
     }
-    .popular-section h2 {
-        font-size: 1.5rem;
+    .popular-section-h2 {
+        font-size: 1.1em; /* еще меньше размер шрифта */
+        padding-left: 10px; /* меньший отступ */
     }
-    .card {
-        flex: 0 1 100%;
+
+        .popular-section-h2::before,
+        .popular-section-h2::after {
+            width: 25%; /* длина линий уменьшается */
+            height: 0.6px; /* линии тоньше */
+        }
+        .card {
+        flex: 0 1 94%;
     }
+
 }
 
 @media (max-width: 320px) {
@@ -1008,8 +995,16 @@ footer {
     .order-button {
         font-size: 0.7rem;
         padding: 5px 10px;
+        margin-right: 20px;
     }
-    .popular-section h2 {
-        font-size: 1.2rem;
+    .popular-section-h2 {
+        font-size: 1em; /* самый маленький размер шрифта */
+        padding-left: 5px; /* минимальный отступ */
     }
+
+        .popular-section-h2::before,
+        .popular-section-h2::after {
+            width: 20%; /* еще короче линии */
+            height: 0.5px; /* очень тонкие линии */
+        }
 }
