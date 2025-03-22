@@ -11,32 +11,32 @@
 
     <header>
         <div class="top-bar">
-            <!-- Логотип -->
+            <!-- Гамбургер -->
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+            <!-- Логотип по центру -->
             <div class="logo-container">
                 <a href="index.html">
-                    <img src="log.png" alt="Whimsy Logo">
+                    <img src="log.png" alt="GdeBydeika Logo">
                 </a>
             </div>
 
-           <!-- Гамбургер-меню -->
-<input type="checkbox" id="menu-toggle" class="menu-checkbox">
-<label for="menu-toggle" class="menu-icon">☰</label>
-
-<nav class="menu">
-    <ul>
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="katalog.html">Каталог</a></li>
-        <li><a href="about-us.html">О нас</a></li>
-    </ul>
-</nav>
-
-            <!-- Кнопка + корзина -->
+            <!-- Кнопка "Онлайн заказ" справа -->
             <div class="right-container">
-                <button class="order-button" onclick="location.href='individual-order.html'">Онлайн заказ</button>
+                <button class="order-button" onclick="location.href='individual-order.html'">
+                    Онлайн заказ
+                </button>
             </div>
         </div>
 
-        </div>
+        <!-- Выплывающее меню -->
+        <nav class="mobile-menu">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="katalog.html">Каталог</a></li>
+                <li><a href="about-us.html">О нас</a></li>
+            </ul>
+        </nav>
     </header>
     <div class="info">
         <section class="why-us">
@@ -104,6 +104,10 @@
             </ul>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script>
+        function toggleMenu() {
+            document.querySelector('.mobile-menu').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
