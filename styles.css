@@ -95,12 +95,25 @@ header {
 }
 
 /* Иконка гамбургера – скрыта на десктопе */
-.menu-icons {
+.menu-checkbox {
     display: none;
-    font-size: 1.8rem;
-    color: #2b0e2f;
+}
+
+/* Иконка меню */
+.menu-icon {
+    display: none;
+    font-size: 2rem;
     cursor: pointer;
-    padding: 0.5rem;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 1100;
+}
+
+/* Стили для меню */
+.menu {
+    display: flex;
+    gap: 2rem;
 }
 
     /* Активное меню (например, при добавлении класса .mobile-active) */
@@ -1002,91 +1015,234 @@ header {
     margin-right: 70px;
 }
 
-/* 
-  === Адаптивный CSS для всех размеров экрана ===
-  Предполагается, что базовые (desktop) стили уже определены выше.
-*/
+@media (min-width: 1366px) {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 
-/* ----- Планшетные устройства (от 769px до 1024px) ----- */
-@media only screen and (max-width: 1024px) and (min-width: 769px) {
-  /* Немного уменьшаем отступы для шапки */
-  header {
-    padding: 1rem 4%;
-  }
-  
-  /* Сокращаем промежутки между пунктами меню */
-  .menu ul {
-    gap: 2rem;
-  }
-  
-  /* В разделе "Популярное" меняем расположение карточек на 2 в ряду */
-  .popular-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .popular-section .card {
-    flex: 0 1 calc(50% - 20px); /* две карточки в ряду с учётом промежутка */
-  }
+    .menu ul {
+        gap: 40px;
+    }
+
+    .card {
+        flex: 0 1 calc(25% - 20px); /* 4 карточки в ряд */
+    }
+
+    .order-form {
+        max-width: 600px;
+    }
 }
 
-/* ----- Мобильные устройства: экраны до 768px ----- */
-@media only screen and (max-width: 768px) {
-  /* Уменьшаем отступы шапки для экономии места */
-  header {
-    padding: 1rem 3%;
-  }
-  
-  /* Скрываем стандартное горизонтальное меню */
-  .menu ul {
-    display: none;
-  }
-  
-  /* Отображаем иконку гамбургера */
-  .menu-icons {
-    display: block;
-  }
-  
-  /* Стили для активного мобильного меню (при наличии класса .mobile-active) */
-  nav.menu.mobile-active ul {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;       /* сразу под шапкой */
-    left: 0;
-    width: 100%;
-    background: linear-gradient(90deg, #f9f3fc, #e8d9f1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Стили для каждого пункта мобильного меню */
-  nav.menu.mobile-active ul li {
-    padding: 1rem 0;
-    text-align: center;
-    /* Разделительная линия с градиентной обводкой */
-    border-top: 1px solid transparent;
-    border-image: linear-gradient(to right, transparent, #54425b, transparent) 1;
-  }
-  
-  /* Раздел "Популярное": карточки располагаем по 2 в ряду */
-  .popular-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .popular-section .card {
-    flex: 0 1 calc(47% - 20px);
-  }
+/* ====== МАЛЫЕ ДЕСКТОПЫ (1024px – 1366px) ====== */
+@media (max-width: 1366px) {
+    .container {
+        max-width: 1000px;
+    }
+
+    .menu ul {
+        gap: 30px;
+    }
+
+    .card {
+        flex: 0 1 calc(33.3% - 20px); /* 3 карточки в ряд */
+    }
 }
 
-/* ----- Очень маленькие устройства: экраны до 480px ----- */
-@media only screen and (max-width: 480px) {
-  /* Для малых экранов карточки в разделе "Популярное" занимают всю ширину */
-  .popular-section .card {
-    flex: 0 1 calc(100% - 20px);
-  }
+/* ====== ПЛАНШЕТЫ (768px – 1024px) ====== */
+@media (max-width: 1024px) {
+    .container {
+        max-width: 90%;
+    }
+
+    /* Шапка */
+    .top-bar {
+        padding: 15px;
+    }
+
+    .menu ul {
+        gap: 20px;
+    }
+
+    /* Карточки товаров */
+    .popular-section {
+        gap: 15px;
+    }
+
+    .card {
+        flex: 0 1 calc(50% - 15px); /* 2 карточки в ряд */
+    }
+
+    /* Форма заказа */
+    .order-form {
+        max-width: 80%;
+    }
+}
+
+/* ====== МОБИЛЬНАЯ ВЕРСИЯ (до 768px) ====== */
+@media (max-width: 768px) {
+    
+    /* ========== ШАПКА И НАВИГАЦИЯ ========== */
+    .top-bar {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 15px;
+    }
+
+    .logo-container img {
+        width: 80px;
+        height: auto;
+    }
+
+    /* Основное меню */
+    .menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+        z-index: 1050;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .menu ul li {
+        width: 100%;
+        padding: 12px 0;
+        text-align: center;
+    }
+
+    /* Гамбургер-меню */
+    .menu-toggle {
+        display: block;
+        font-size: 2rem;
+        cursor: pointer;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        z-index: 1100;
+        color: #2b0e2f;
+    }
+
+    .menu-checkbox {
+        display: none;
+    }
+    
+    .menu-checkbox:checked + .menu-toggle + .menu {
+        display: flex;
+    }
+
+    /* ========== КАРТОЧКИ ТОВАРОВ ========== */
+    .popular-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        padding: 0 5px;
+    }
+
+    .card {
+        flex: 0 1 calc(50% - 10px);
+        margin-bottom: 15px;
+        padding: 15px;
+        border-radius: 12px;
+        background-color: #f9f3fc;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    .card img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .card h4 {
+        font-size: 14px;
+        text-align: center;
+        margin: 10px 0 5px 0;
+    }
+
+    .card p {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .cart-controls {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .add-to-cart {
+        font-size: 14px;
+        padding: 8px 5px;
+        width: 90%;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #6e4a87, #51406a);
+        color: #fff;
+    }
+
+    /* ========== ФОРМА ЗАКАЗА ========== */
+    .order-form {
+        max-width: 90%;
+        padding: 20px;
+        margin: 20px auto;
+        border-radius: 12px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .order-form input,
+    .order-form textarea {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .order-form button {
+        font-size: 14px;
+        padding: 12px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #4b2d7f, #764ea5);
+        color: #fff;
+        width: 100%;
+    }
+
+    /* ========== ПОДВАЛ (FOOTER) ========== */
+    footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        background-color: #2b0e2f;
+        color: #f4ecfd;
+    }
+
+    .footer-column {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .footer-column ul {
+        padding: 0;
+    }
+
+    .footer-column h3 {
+        font-size: 1.3rem;
+    }
+
+    .footer-column a {
+        font-size: 14px;
+    }
+
+    .social-icons img {
+        width: 30px;
+    }
 }
